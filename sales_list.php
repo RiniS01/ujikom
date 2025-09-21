@@ -11,7 +11,7 @@ $sql = "SELECT s.id_sales, s.tgl_sales, s.do_number, s.status,
                c.nama_customer, p.nama_user AS petugas_name
         FROM sales s
         JOIN customer c ON s.id_customer = c.id_customer
-        JOIN petugas p ON s.id_user = p.id_user
+        JOIN users p ON s.id_user = p.id_user
         ORDER BY s.id_sales DESC";
 $result = $mysqli->query($sql);
 ?>

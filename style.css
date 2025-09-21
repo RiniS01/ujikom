@@ -64,8 +64,54 @@ h2, h3 {
     box-shadow: 0 0 0 .15rem rgba(13,110,253,.25);
 }
 
-/* ==================== NAVBAR / HEADER ==================== */
+
 .navbar {
     margin-bottom: 20px;
     border-radius: 8px;
+}
+/* Sidebar utama */
+.sidebar {
+    width: 220px;               
+    height: 100vh;              
+    background-color: #2c3e50;  
+    color: #ecf0f1;             
+    position: fixed;           
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+/* List utama */
+.sidebar ul {
+    list-style: none; 
+    padding: 0;
+}
+
+/* Item list */
+.sidebar ul li {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Link */
+.sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover efek */
+.sidebar ul li:hover {
+    background-color: #34495e;
+}
+
+/* Submenu (Master & Transaksi) */
+.sidebar ul li ul {
+    display: none; 
+    padding-left: 15px;
+}
+
+/* Jika item di hover, submenu muncul */
+.sidebar ul li:hover > ul {
+    display: block;
 }

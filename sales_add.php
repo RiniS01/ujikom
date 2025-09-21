@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 // Ambil data customer & petugas untuk dropdown
 $customers = $mysqli->query("SELECT * FROM customer ORDER BY nama_customer");
-$petugas = $mysqli->query("SELECT * FROM petugas ORDER BY nama_user");
+$petugas = $mysqli->query("SELECT * FROM users WHERE level = 2");
 ?>
 
 <!DOCTYPE html>
