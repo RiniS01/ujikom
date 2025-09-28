@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require 'includes/config.php';
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_name'] = $row['nama_user'];
         $_SESSION['level']     = $row['level'];
 
-        header("Location: dashboard.php");
+        header("Location:index.php?page=dashboard");
         exit;
     } else {
         // Login gagal

@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
-session_start();
+// require '../../includes/config.php';
+// session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sssssi", $nama, $alamat, $telp, $fax, $email, $id);
 
     if ($stmt->execute()) {
-        header("Location: customer_list.php");
+        header("Location:index.php?page=customer_list");
         exit;
     } else {
         echo "Gagal update: " . $stmt->error;
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($customer['email']); ?>">
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
-        <a href="customer_list.php" class="btn btn-secondary">Batal</a>
+        <a href="index.php?page=customer_list" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 </body>

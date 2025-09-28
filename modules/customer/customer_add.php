@@ -1,8 +1,8 @@
 <?php
-require 'config.php';
-session_start();
+// require '../../includes/config.php';
+// session_start();
 if (!isset($_SESSION['user_id'])) { 
-    header("Location: login.php"); 
+    header("Location: ../../login.php"); 
     exit; 
 }
 
@@ -20,8 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sssss", $nama, $alamat, $telp, $fax, $email);
 
     if ($stmt->execute()) {
-        header("Location: customer_list.php");
-        exit;
+        // header("Location: customer_list.php");
+        header("Location:index.php?page=customer&type=list");
+        // exit;
     } else {
         echo "Gagal simpan data: " . $stmt->error;
     }

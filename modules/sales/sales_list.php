@@ -1,8 +1,8 @@
 <?php
-require 'config.php';
-session_start();
+// require '../../includes/config.php';
+// session_start();
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../../login.php");
     exit;
 }
 
@@ -27,7 +27,7 @@ $result = $mysqli->query($sql);
 
 <div class="container mt-5">
 <h2>List Sales</h2>
-<a href="sales_add.php" class="btn btn-primary mb-3">Tambah Sales</a>
+<a href="index.php?page=sales_add" class="btn btn-primary mb-3">Tambah Sales</a>
 
 <table class="table table-bordered bg-white">
 <thead>
@@ -51,8 +51,8 @@ $result = $mysqli->query($sql);
 <td><?= htmlspecialchars($row['nama_customer']) ?></td>
 <td><?= htmlspecialchars($row['petugas_name']) ?></td>
 <td>
-<a href="sales_edit.php?id=<?= $row['id_sales'] ?>" class="btn btn-sm btn-warning">Edit</a>
-<a href="sales_delete.php?id=<?= $row['id_sales'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus sales ini?')">Hapus</a>
+<a href="index.php?page=sales_edit&id=<?= $row['id_sales'] ?>" class="btn btn-sm btn-warning">Edit</a>
+<a href="index.php?page=sales_delete&id=<?= $row['id_sales'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus sales ini?')">Hapus</a>
 </td>
 </tr>
 <?php endwhile; ?>

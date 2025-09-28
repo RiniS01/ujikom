@@ -1,7 +1,7 @@
 <?php
-require 'config.php';
-session_start();
-if (!isset($_SESSION['user_id'])) header("Location: login.php");
+// require '../../includes/config.php';
+// session_start();
+if (!isset($_SESSION['user_id'])) header("Location: ../../login.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = $_POST['nama_item'];
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt = $mysqli->prepare("INSERT INTO item (nama_item, uom, harga_beli, harga_jual) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssdd", $nama, $uom, $harga_beli, $harga_jual);
-    if ($stmt->execute()) header("Location: item_list.php");
+    if ($stmt->execute()) header("Location:index.php?page=item_list");
     else echo "Gagal simpan: ".$stmt->error;
     $stmt->close();
 }
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <input type="number" name="harga_jual" class="form-control" step="0.01">
 </div>
 <button type="submit" class="btn btn-primary">Simpan</button>
-<a href="item_list.php" class="btn btn-secondary">Batal</a>
+<a href="index.php?page=item_list" class="btn btn-secondary">Batal</a>
 </form>
 </div>
 </body>

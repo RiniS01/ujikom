@@ -1,8 +1,9 @@
 <?php 
-require 'config.php'; 
+require 'includes/config.php'; 
 session_start();
 if (isset($_SESSION['user_id'])) {
-    header('Location: dashboard.php'); 
+    // header('Location: dashboard.php');
+    header('Location:index.php?page=dashboard'); 
     exit;
 }
 $error = isset($_GET['error']) ? (int)$_GET['error'] : 0;

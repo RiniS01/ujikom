@@ -1,7 +1,7 @@
 <?php
-require 'config.php';
-session_start();
-if (!isset($_SESSION['user_id'])) header("Location: login.php");
+// require '../../includes/config.php';
+// session_start();
+if (!isset($_SESSION['user_id'])) header("Location: ../../login.php");
 
 $id = $_GET['id'] ?? 0;
 $stmt = $mysqli->prepare("SELECT * FROM item WHERE id_item=?");
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt = $mysqli->prepare("UPDATE item SET nama_item=?, uom=?, harga_beli=?, harga_jual=? WHERE id_item=?");
     $stmt->bind_param("ssddi", $nama, $uom, $harga_beli, $harga_jual, $id);
-    if ($stmt->execute()) header("Location: item_list.php");
+    if ($stmt->execute()) header("Location:index.php?page=item_list");
     else echo "Gagal update: ".$stmt->error;
     $stmt->close();
 }
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <input type="number" name="harga_jual" class="form-control" step="0.01" value="<?= htmlspecialchars($item['harga_jual']); ?>">
 </div>
 <button type="submit" class="btn btn-primary">Update</button>
-<a href="item_list.php" class="btn btn-secondary">Batal</a>
+<a href="index.php?page=item_list" class="btn btn-secondary">Batal</a>
 </form>
 </div>
 </body>
